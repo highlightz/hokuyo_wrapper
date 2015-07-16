@@ -2,7 +2,7 @@
 #
 # Project created by QtCreator 2015-07-15T16:17:23
 # This wrapper is actully cross-platform, as a convenient demo, 
-# Qt is chosen to show how this wrapper is used.
+# Qt is chosen to show how this wrapper is used, under Ubuntu 12.04(64bit).
 # Note: urg_lib is needed as a fundamental driver for urg device.
 # The link is:
 # http://sourceforge.net/projects/urgnetwork/files/urg_library/
