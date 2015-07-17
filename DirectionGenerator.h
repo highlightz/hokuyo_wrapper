@@ -45,6 +45,11 @@ private:
             f_y = 0;
         }
     };
+    // Because the scan angle range is set to [-90deg, 90deg],
+    // and the step is 0.25deg, 
+    // so the distance data length is 721,
+    // thus the artificial force sequence is of length 721,
+    // which is to be initialized when constructing the object.
     vector< artificial_force > artificial_force_seq;
     double sumArtificialForces( vector< long > distance );
 
@@ -60,6 +65,7 @@ private:
     double slideWindow( vector< long > distance );
 
     // Algorithm 5
+    // TODO:
     // Find the direction with the longest distance,
     // meanwhile, check its neighbors' distances
 };
