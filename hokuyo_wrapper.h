@@ -22,11 +22,14 @@ class hokuyo_wrapper
 public:
     hokuyo_wrapper( int argc, char** argv );
     bool startHokuyo( );
+    // Set interest scanning radius, the unit is mm
+    void setInterestRadius( long radius );
     bool bufferDistance( );
     vector< long > getDistance( ) const;
     void showDistancePoints( cv::Mat& bkground );
 private:
     Connection_information information;
+    long interestRadius;
 public:
     Urg_driver urg;
 private:
