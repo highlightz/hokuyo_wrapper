@@ -42,6 +42,11 @@ bool hokuyo_wrapper::startHokuyo( )
     return true;
 }
 
+void hokuyo_wrapper::setInterestRadius( long radius )
+{
+    interestRadius = radius;
+}
+
 bool hokuyo_wrapper::bufferDistance( )
 {
     if ( runStatus )
@@ -87,6 +92,12 @@ void hokuyo_wrapper::showDistancePoints( cv::Mat& bkground )
               
     for ( int index = 0; index < distance_data.capacity( ); index++ )
     {
+        // Limit the distance data to interest radius
+        if ( distance_data[index] > interestRadius )
+        {
+            distance_data[index] = interestRadius;
+        }
+        
         double x = distance_data[index] * cos( urg.index2rad( index ) );
         double y = distance_data[index] * sin( urg.index2rad( index ) );
 
