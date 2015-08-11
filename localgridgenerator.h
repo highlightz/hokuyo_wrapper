@@ -4,6 +4,10 @@
 #include <vector>
 using std::vector;
 
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+
 #define CAR_WIDTH 500
 #define CAR_LENGTH 750
 #define INTEREST_RADIUS 3881
@@ -26,6 +30,7 @@ public:
     void updateGrid( vector< long > distance );
     void clearGrid( );
     void showGrid( );
+    void showGridOccupancy( cv::Mat& bkground );
 private:
     long interestRadius;
     grid_cell grid[GRID_WIDTH][GRID_HEIGHT];
