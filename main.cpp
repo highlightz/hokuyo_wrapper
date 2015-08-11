@@ -6,6 +6,7 @@ using std::endl;
 
 #include "hokuyo_wrapper.h"
 #include "DirectionGenerator.h"
+#include "localgridgenerator.h"
 
 int main( int argc, char** argv )
 {
@@ -36,7 +37,7 @@ int main( int argc, char** argv )
         cout << laser.urg.index2deg( laser.urg.step2index( laser.urg.deg2step( -67.5 ) ) ) << endl;
         cout << laser.urg.index2rad( laser.urg.step2index( laser.urg.deg2step( -67.5 ) ) ) << endl;
 */
-        cout << "--------------------------------------------" << endl;
+        cout << "-------------------------------------------------------------------------------------------------------------------------------" << endl;
 
         laser.showDistancePoints( laserPoints );
         cv::imshow( "laserpoints", laserPoints );
