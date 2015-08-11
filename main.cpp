@@ -14,10 +14,14 @@ int main( int argc, char** argv )
     laser.startHokuyo( );
     laser.setInterestRadius( 10000 );  // 10 meters
     
-    DirectionGenerator dg;
-    dg.setInterestRadius( 1500 );  // 1.5 meters
+    LocalGridGenerator lGG;
+    lGG.setInterestRadius( 3000 );  // 3 meters
+    
+//    DirectionGenerator dg;
+//    dg.setInterestRadius( 1500 );  // 1.5 meters
 
     cv::Mat laserPoints;
+    cv::Mat gridMap;
 
     for ( ; ; )
     {
@@ -37,6 +41,15 @@ int main( int argc, char** argv )
         cout << laser.urg.index2deg( laser.urg.step2index( laser.urg.deg2step( -67.5 ) ) ) << endl;
         cout << laser.urg.index2rad( laser.urg.step2index( laser.urg.deg2step( -67.5 ) ) ) << endl;
 */
+
+        lGG.updateGrid( distance );
+        lGG.showGrid( );
+        lGG.showGridOccupancy( gridMap );
+        cv::imshow( "gridMap", gridMap );
+        cv::waitKey( 5 );
+        gridMap.setTo( cv::Scalar( 0 ) );
+        lGG.clearGrid( );
+        
         cout << "-------------------------------------------------------------------------------------------------------------------------------" << endl;
 
         laser.showDistancePoints( laserPoints );
