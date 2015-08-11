@@ -78,6 +78,45 @@ void LocalGridGenerator::showGrid( )
     cout << endl;
 }
 
+void LocalGridGenerator::showGridOccupancy( cv::Mat& bkground )
+{
+    bkground.create( cv::Size( 480, 320 ), CV_8UC3 );
+    const int occupancyValThreshold = 24;  // Wild value, to be tuned
+    const double scale = 50;
+
+    for ( int i = 0; i < GRID_HEIGHT; i++ )
+    {
+        for ( int j = 0; j < GRID_WIDTH; j++ )
+        {
+            if ( grid[i][j].occupancyValue > occupancyValThreshold )
+            {
+                // Coordinate transformation for convenient display
+                double x_display = grid[i][j].centralY / 1000;
+                double y_display = grid[i][j].centralX / 1000;
+
+                x_display = -x_display * scale + bkground.cols / 2;
+                y_display = -y_display * scale + bkground.rows * 3 / 4;
+
+                cv::circle( bkground, cv::Point( x_display, y_display ), 5, cv::Scalar( 0, 255, 0 ), 10 );
+
+            }
+            else
+            {
+                // Coordinate transformation for convenient display
+                double x_display = grid[i][j].centralY / 1000;
+                double y_display = grid[i][j].centralX / 1000;
+
+                x_display = -x_display * scale + bkground.cols / 2;
+                y_display = -y_display * scale + bkground.rows * 3 / 4;
+
+
+                cv::circle( bkground, cv::Point( x_display, y_display ), 5, cv::Scalar( 0, 0, 255 ), 10 );
+
+            }
+        }
+    }
+}
+
 int LocalGridGenerator::deg2step( double deg )
 {
     return static_cast< int >( 4 * deg );
