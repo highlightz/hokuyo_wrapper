@@ -22,6 +22,7 @@ public:
     // Set interest radius, the unit is mm
     void setInterestRadius( long radius );
     double process( vector< long > distance );
+    void genWaypoint( vector< long > distance, double& x, double& y );
 private:
     long interestRadius;
 
