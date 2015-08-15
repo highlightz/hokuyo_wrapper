@@ -8,12 +8,12 @@ using std::vector;
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
-#define CAR_WIDTH 500
+#define CAR_WIDTH 600
 #define CAR_LENGTH 750
-#define INTEREST_RADIUS 3881
-
-#define GRID_WIDTH 6
-#define GRID_HEIGHT 5
+#define GRID_WIDTH 14
+#define GRID_HEIGHT 12
+#define CELL_SIZE 300
+#define INTEREST_RADIUS 14*CELL_SIZE
 
 struct grid_cell
 {
@@ -26,14 +26,14 @@ class LocalGridGenerator
 {
 public:
     LocalGridGenerator( );
-    void setInterestRadius( long radius );
+    void setInterestRadius( long radius = INTEREST_RADIUS );
     void updateGrid( vector< long > distance );
     void clearGrid( );
     void showGrid( );
     void showGridOccupancy( cv::Mat& bkground );
 private:
     long interestRadius;
-    grid_cell grid[GRID_WIDTH][GRID_HEIGHT];
+    grid_cell grid[GRID_HEIGHT][GRID_WIDTH];
 
     // Mapping: [-90 deg, +90 deg] -> [-360, +360] -> [0, 720]
     int deg2step( double deg );
