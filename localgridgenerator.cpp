@@ -66,13 +66,13 @@ void LocalGridGenerator::showGrid( )
         for ( int j = 0; j < GRID_WIDTH; j++ )
         {
             cout << setw( 2 );
-            cout << "( "
+            cout << "("
                  << grid[i][j].centralX / 1000
-                 << ", "
+                 << ","
                  << grid[i][j].centralY / 1000
-                 << ", "
+                 << ","
                  << grid[i][j].occupancyValue
-                 << " )";
+                 << ")";
         }
         cout << endl << endl << endl << endl;
     }
@@ -81,7 +81,7 @@ void LocalGridGenerator::showGrid( )
 
 void LocalGridGenerator::showGridOccupancy( cv::Mat& bkground )
 {
-    bkground.create( cv::Size( 480, 320 ), CV_8UC3 );
+    bkground.create( cv::Size( 640, 480 ), CV_8UC3 );
     const int occupancyValThreshold = 24;  // Wild value, to be tuned
     const double scale = 80;
 
