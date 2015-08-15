@@ -15,7 +15,6 @@ int main( int argc, char** argv )
     laser.setInterestRadius( 10000 );  // 10 meters
     
     LocalGridGenerator lGG;
-    lGG.setInterestRadius( 3000 );  // 3 meters
     
 //    DirectionGenerator dg;
 //    dg.setInterestRadius( 1500 );  // 1.5 meters
@@ -28,7 +27,7 @@ int main( int argc, char** argv )
         laser.bufferDistance( );
         vector< long > distance = laser.getDistance( );
         
-        cout << dg.process( distance ) << endl;
+        //cout << dg.process( distance ) << endl;
 /*
         cout << "-67.5 deg: " << distance[ laser.urg.step2index( laser.urg.deg2step( -67.5 ) ) ] << endl;
         cout << "  -45 deg: " << distance[ laser.urg.step2index( laser.urg.deg2step( -45 ) ) ] << endl;
@@ -46,7 +45,6 @@ int main( int argc, char** argv )
         lGG.showGrid( );
         lGG.showGridOccupancy( gridMap );
         cv::imshow( "gridMap", gridMap );
-        cv::waitKey( 5 );
         gridMap.setTo( cv::Scalar( 0 ) );
         lGG.clearGrid( );
         
