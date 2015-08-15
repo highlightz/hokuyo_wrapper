@@ -17,8 +17,8 @@ LocalGridGenerator::LocalGridGenerator( )
         for ( int j = 0; j < GRID_WIDTH; j++ )
         {
             grid[i][j].occupancyValue = 0;
-            grid[i][j].centralX = CAR_LENGTH * ( GRID_HEIGHT - 0.5 - i );
-            grid[i][j].centralY = CAR_WIDTH * ( GRID_WIDTH / 2 - 0.5 - j );
+            grid[i][j].centralX = CELL_SIZE * ( GRID_HEIGHT - 0.5 - i );
+            grid[i][j].centralY = CELL_SIZE * ( GRID_WIDTH / 2 - 0.5 - j );
         }
     }
 }
@@ -84,7 +84,7 @@ void LocalGridGenerator::showGridOccupancy( cv::Mat& bkground )
 {
     bkground.create( cv::Size( 480, 320 ), CV_8UC3 );
     const int occupancyValThreshold = 24;  // Wild value, to be tuned
-    const double scale = 50;
+    const double scale = 80;
 
     for ( int i = 0; i < GRID_HEIGHT; i++ )
     {
