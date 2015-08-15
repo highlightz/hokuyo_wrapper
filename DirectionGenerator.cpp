@@ -320,3 +320,11 @@ double DirectionGenerator::process( vector< long > distance )
     // Or
     //return slideWindow( distance );
 }
+
+void DirectionGenerator::genWaypoint( vector< long > distance, double& x, double& y )
+{
+    double directionAngleDeg = process( distance );
+    int waypointIndex = step2index( deg2step( directionAngleDeg ) );
+    x = distance[ waypointIndex ] * cos( deg2rad( directionAngleDeg ) );
+    y = distance[ waypointIndex ] * sin( deg2rad( directionAngleDeg ) );
+}
