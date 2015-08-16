@@ -20,6 +20,7 @@ struct grid_cell
     double centralX;
     double centralY;
     int occupancyValue;
+    bool isFree;
 };
 
 class LocalGridGenerator
