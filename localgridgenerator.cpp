@@ -17,6 +17,7 @@ LocalGridGenerator::LocalGridGenerator( )
         for ( int j = 0; j < GRID_WIDTH; j++ )
         {
             grid[i][j].occupancyValue = 0;
+            grid[i][j].isFree = true;
             grid[i][j].centralX = CELL_SIZE * ( GRID_HEIGHT - 0.5 - i );
             grid[i][j].centralY = CELL_SIZE * ( GRID_WIDTH / 2 - 0.5 - j );
         }
@@ -30,6 +31,8 @@ void LocalGridGenerator::setInterestRadius( long radius )
 
 void LocalGridGenerator::updateGrid( vector< long > distance )
 {
+    const int occupancyValThreshold = 24;  // Wild value, to be tuned
+    
     for ( int i = 0; i < GRID_HEIGHT; i++ )
     {
         for ( int j = 0; j < GRID_WIDTH; j++ )
@@ -53,6 +56,11 @@ void LocalGridGenerator::updateGrid( vector< long > distance )
                     grid[i][j].occupancyValue++;
                 }
             }
+            
+            if ( grid[i][j].occupancyValue > occupancyValThreshold )
+                grid[i][j].isFree = false;
+            else
+                grid[i][j].isFree = true;
         }
     }
 }
@@ -89,7 +97,8 @@ void LocalGridGenerator::showGridOccupancy( cv::Mat& bkground )
     {
         for ( int j = 0; j < GRID_WIDTH; j++ )
         {
-            if ( grid[i][j].occupancyValue > occupancyValThreshold )
+            //if ( grid[i][j].occupancyValue > occupancyValThreshold )
+            if ( grid[i][j].isFree == false )
             {
                 // Coordinate transformation for convenient display
                 double x_display = grid[i][j].centralY / 1000;
