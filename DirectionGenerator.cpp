@@ -44,6 +44,8 @@ int DirectionGenerator::findIndexOfMaxValue( long sum[], int length )
     return indexOfMaxValue;
 }
 
+// This algorithm of selecting a deepest direction from fixed directions is not robust.
+// And the computed resultant direction angle fluctuates severely.
 double DirectionGenerator::selectFromFixedDirections( vector< long > distance )
 {
     // Pre-define 9 samplers
@@ -147,7 +149,7 @@ double DirectionGenerator::sumArtificialForces( vector< long > distance )
     double sum_force_x = 0;
     double sum_force_y = 0;
 
-    for ( unsigned int index = 0; index < distance.capacity( ); index++ )
+    for ( unsigned int index = 0; index < distance.size( ); index++ )
     {
         double radian = index2rad( index );
         //cout << radian << endl;
