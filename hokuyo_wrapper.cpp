@@ -76,7 +76,7 @@ void hokuyo_wrapper::showDistancePoints( cv::Mat& bkground )
     bkground.create( cv::Size( 480, 320 ), CV_8UC3 );
 
     const double maxScanDistance = urg.max_distance( );
-    const double adjustable_factor = 6;
+    const double adjustable_factor = 7;
     const double scale = bkground.cols / 2 / maxScanDistance * adjustable_factor;
 
     // Draw axes
@@ -90,7 +90,7 @@ void hokuyo_wrapper::showDistancePoints( cv::Mat& bkground )
               cv::Point( bkground.cols / 2, bkground.rows * 3 / 4 ),
               cv::Scalar( 0, 255, 0 ), 2 );
               
-    for ( int index = 0; index < distance_data.capacity( ); index++ )
+    for ( int index = 0; index < distance_data.size( ); index++ )
     {
         // Limit the distance data to interest radius
         if ( distance_data[index] > interestRadius )
