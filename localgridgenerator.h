@@ -29,6 +29,7 @@ public:
     LocalGridGenerator( );
     void setInterestRadius( long radius = INTEREST_RADIUS );
     void updateGrid( vector< long > distance );
+    void genWaypoint( double& x, double& y );
     void clearGrid( );
     void showGrid( );
     void showGridOccupancy( cv::Mat& bkground );
