@@ -13,7 +13,7 @@ using std::fixed;
 #include <vector>
 using std::vector;
 
-#define SQUARE(A) (((A) * (A)))
+#include "structures.h"
 
 class DirectionGenerator
 {
