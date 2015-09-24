@@ -26,7 +26,7 @@ bool hokuyo_wrapper::startHokuyo( )
                      << information.device_or_ip_name( )
                      << ": " << urg.what( ) << endl;
 #endif
-        return true;
+        return false;
     }
 
     urg.set_scanning_parameter( urg.deg2step( -90 ), urg.deg2step( +90 ), 0 );
